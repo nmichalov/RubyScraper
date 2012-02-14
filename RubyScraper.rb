@@ -8,7 +8,7 @@ Anemone.crawl("http://www.hackerschool.com/") do |anemone|
     @page = page.body
     @doc = Nokogiri::HTML.parse(@page)
     @doc.xpath('//p/text()').each do |p_tag|
-      puts p_tag.content
+      File.open('test.txt', 'a') {|f| f.write(p_tag.content) }
     end
   end
 end
